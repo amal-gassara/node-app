@@ -1,0 +1,27 @@
+FROM node
+WORKDIR /app
+COPY . /app
+RUN npm install
+CMD [ "node","server.js" ]
+
+touch Dockerfile
+
+docker build -t node-app-test .
+
+docker run -p 3000:80 sha256:7729df20d763c818a480d63ea3af04ced8fca89a86bc67120a0997d85b19bc72
+
+2) docker run -p 3000:80 --name node-container sha256:7729df20d763c818a480d63ea3af04ced8fca89a86bc67120a0997d85b19bc72
+
+docker stop node-container
+
+docker start node-container
+
+3) docker container prune
+
+docker image prune
+
+ou ( docker rmi cc737388629cfcf984bab70fe59693d231de6e14a35eaca244d1d18755288fb5 )
+
+4) docker build -t new-image:2 .
+
+5) docker run -p 3001:80 --rm --name node-container2 new-image
